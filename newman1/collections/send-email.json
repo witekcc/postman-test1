@@ -1,0 +1,53 @@
+{
+	"id": "2883bd45-781c-a0b9-638c-f274644762db",
+	"name": "demo",
+	"description": "",
+	"order": [
+		"311fd5dc-6d57-a927-1dd2-c4b3f0bba540",
+		"a6654ee0-4ec2-1d85-79e3-0579899b9071"
+	],
+	"folders": [],
+	"timestamp": 1464097045676,
+	"owner": "627866",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "311fd5dc-6d57-a927-1dd2-c4b3f0bba540",
+			"headers": "",
+			"url": "http://localhost:9023/campaigns",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \n tests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \n \n console.log(\"content type:\")\n console.log(responseHeaders[\"Content-Type\"])\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = responseHeaders[\"Content-Type\"] === \"application/json; charset=utf-8\";\n}\n\nvar jsonData = JSON.parse(responseBody);\n\nconsole.log(\"jsonData.records[0].UUID:\")\n console.log(jsonData.records[0].UUID)\n\npostman.setGlobalVariable(\"campaign_uuid\", jsonData.records[0].UUID);\npostman.setEnvironmentVariable(\"campaign_uuid\", jsonData.records[0].UUID);\n\n\n\n\n\n\n\n\n\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1464118318876,
+			"name": "GET /campaigns",
+			"description": "",
+			"collectionId": "2883bd45-781c-a0b9-638c-f274644762db",
+			"responses": []
+		},
+		{
+			"id": "a6654ee0-4ec2-1d85-79e3-0579899b9071",
+			"headers": "",
+			"url": "http://localhost:9023/campaigns/{{campaign_uuid}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n\n\n \n\nconsole.log(\"campaign:\" + postman.getGlobalVariable(\"campaign_uuid\")) ",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1464118123296,
+			"name": "GET /campaigns/:campaign_uuid",
+			"description": "",
+			"collectionId": "2883bd45-781c-a0b9-638c-f274644762db",
+			"responses": []
+		}
+	]
+}

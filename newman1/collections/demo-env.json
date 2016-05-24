@@ -1,0 +1,18 @@
+{
+	"id": "67e599e2-1f91-b188-d402-e586ae768f04",
+	"name": "demo-env",
+	"values": [
+		{
+			"key": "campaign_uuid",
+			"value": "ea6edcfd-e984-04d3-7632-dc15a2b95264",
+			"type": "text",
+			"enabled": true,
+			"hovered": false
+		}
+	],
+	"timestamp": 1464118319426,
+	"synced": false,
+	"syncedFilename": "",
+	"team": null,
+	"isDeleted": false
+}
